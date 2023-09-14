@@ -1,0 +1,38 @@
+docker run -it -v $(pwd)/src:/src node:18 /bin/bash
+
+cd src 
+
+PROJETO=aula
+
+npx -y create-docusaurus@latest aula classic --typescript
+exit
+
+docker run -it -v $(pwd)/src:/src -p 3000:3000 node:18 /bin/bash  ------ criar container
+cd src
+cd aula
+npx docusaurus start --host 0.0.0.0
+
+AULA2
+
+docker run -v $(pwd)/aula-docusaurus:/src -w /src node:18 npm install
+
+docker run -v $(pwd)/aula-docusaurus:/src -w /src -p 3000:3000 node:18 npx docusaurus start --host 0.0.0.0
+
+
+> docker-compose.yaml -------- criar o arquivo 
+
+container ps ---------- ver containers
+
+docker stop <id do container>   --------- parar container
+
+docker compose up -d ----------- rodar
+
+docker compose down  ------------- parar o que esta rodando
+
+docker run -p 8080:80 httpd
+
+docker compose up web -d ------  rodar o especifico
+
+  profiles: ["init"] --------- só roda se chamar ele especificamente
+  
+  docker compose ps ----- retorna só os que estao rodando na maquina
